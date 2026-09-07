@@ -90,7 +90,7 @@ section[data-testid="stSidebar"] * {
     background-color: #2a2a2a !important;
 }
 [data-testid="stFileChip"] * {
-    color: #f0f0f0 !important;
+    color: #1a1a1a !important;
 }
 [data-testid="stFileChipName"] {
     color: #f0f0f0 !important;
@@ -100,8 +100,8 @@ section[data-testid="stSidebar"] * {
 }
 [data-testid="stFileChipDeleteBtn"] svg {
     fill: #f0f0f0 !important;
-[data-testid="stFileChip"] > div {
-    background-color: #2a2a2a !important;    
+[data-testid="stFileChip"] svg {
+    filter: invert(1) brightness(0.9);    
 }
 </style>
 """, unsafe_allow_html=True)
