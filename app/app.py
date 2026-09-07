@@ -579,7 +579,7 @@ def build_pdf_report(spec, site_count, report_image_png=None):
     y = height - 3 * cm
 
     c.setFont("Helvetica-Bold", 16)
-    c.drawString(2 * cm, y, "Yorta Yorta Vegetation Monitor — Report")
+    c.drawString(2 * cm, y, "Deforestation Monitoring — Report")
     y -= 1 * cm
 
     c.setFont("Helvetica", 10)
@@ -588,7 +588,7 @@ def build_pdf_report(spec, site_count, report_image_png=None):
         f"Period compared: {EARLY_LABEL} vs {RECENT_LABEL}",
         f"Forest mask method: {method_label} (threshold {spec[1]})",
         f"Loss threshold: dNDVI < {LOSS_THRESHOLD}",
-        f"Cultural/heritage sites loaded: {site_count}",
+        f"Points loaded: {site_count}",
         "",
         
     ]
