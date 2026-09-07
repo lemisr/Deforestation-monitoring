@@ -18,8 +18,8 @@ from google.oauth2 import service_account
 # CONFIG
 # =========================================================
 st.set_page_config(
-    page_title="Yorta Yorta Vegetation Monitor",
-    page_icon="🌿",
+    page_title="Vegetation & Deforestation Monitor",
+    
     layout="wide",
 )
 
@@ -677,12 +677,12 @@ if "drawn_invalid_msg" not in st.session_state:
 # =========================================================
 # UI - TITRE / UPLOAD
 # =========================================================
-st.title("🌿 Yorta Yorta Vegetation Monitor")
-st.write("Interactive vegetation monitoring application using GIS and remote sensing.")
+st.title("Vegetation & Deforestation Monitor")
+st.write("Interactive deforestation monitoring application using GIS and remote sensing.")
 
 uploaded_file = st.file_uploader("Upload your analysis area (GeoJSON)", type=["geojson"])
 
-st.subheader("📍 Places")
+
 uploaded_sites_file = st.file_uploader(
     "Upload point locations (KML, zipped Shapefile, or CSV with lat/lon columns)",
     type=["kml", "zip", "csv"],
@@ -739,9 +739,9 @@ if uploaded_file is not None:
     if uploaded_area.geometry.iloc[0].within(boundary_geom):
         active_gdf = uploaded_area
         active_source = "upload"
-        st.success("✅ GeoJSON loaded and inside application boundary")
+        st.success("GeoJSON loaded and inside application boundary")
     else:
-        st.error("❌ Uploaded area is outside the application boundary — ignored.")
+        st.error("Uploaded area is outside the application boundary — ignored.")
 
 elif st.session_state.drawn_geom is not None:
     drawn_gdf = gpd.GeoDataFrame(
@@ -819,7 +819,7 @@ if uploaded_sites_file is not None:
             st.warning(f"{excluded} point(s) outside the application boundary were ignored.")
 
         if sites_gdf.empty:
-            st.error("❌ No point is inside the application boundary.")
+            st.error("No point is inside the application boundary.")
             sites_gdf = None
         else:
             site_name_col = site_label_column(sites_gdf)
@@ -833,7 +833,7 @@ if uploaded_sites_file is not None:
 # EXPORT PDF (stats + carte, sur le 1er seuil forêt actif)
 # =========================================================
 if aoi_geojson_str is not None and active_forest_specs and active_forest_specs[0] is not None:
-    st.subheader("📄 Report export")
+    st.subheader("Map export")
     if st.button("Generate PDF report"):
         with st.spinner("Rendering map..."):
             try:
@@ -867,7 +867,7 @@ if aoi_geojson_str is not None and active_forest_specs and active_forest_specs[0
 
     if st.session_state.get("report_pdf_bytes"):
         st.download_button(
-            "⬇️ Download PDF",
+            "Download PDF",
             data=st.session_state["report_pdf_bytes"],
             file_name="vegetation_report.pdf",
             mime="application/pdf",
@@ -1104,7 +1104,7 @@ if map_data and map_data.get("all_drawings"):
             st.session_state.drawn_invalid_msg = None
         else:
             st.session_state.drawn_invalid_msg = (
-                "❌ Drawn area is outside the application boundary — not processed."
+                "Drawn area is outside the application boundary — not processed."
             )
             st.session_state.drawn_geom = None
 
