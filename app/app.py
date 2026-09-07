@@ -100,8 +100,8 @@ section[data-testid="stSidebar"] * {
 }
 [data-testid="stFileChipDeleteBtn"] svg {
     fill: #f0f0f0 !important;
-[data-testid="stFileChip"] svg {
-    filter: invert(1) brightness(0.9);    
+[data-testid="stFileChip"] div {
+    background-color: #2a2a2a !important;    
 }
 </style>
 """, unsafe_allow_html=True)
