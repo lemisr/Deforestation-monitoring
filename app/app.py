@@ -86,22 +86,18 @@ section[data-testid="stSidebar"] * {
 }
 [data-testid="stFileUploaderFile"] svg {
     fill: #f0f0f0 !important;
+}
 [data-testid="stFileChip"] {
     background-color: #2a2a2a !important;
 }
 [data-testid="stFileChip"] * {
-    color: #1a1a1a !important;
-}
-[data-testid="stFileChipName"] {
-    color: #f0f0f0 !important;
-}
-[data-testid="stFileChipDeleteBtn"] {
     color: #f0f0f0 !important;
 }
 [data-testid="stFileChipDeleteBtn"] svg {
     fill: #f0f0f0 !important;
+}
 [data-testid="stFileChip"] svg {
-    filter: invert(1) brightness(0.9);    
+    filter: invert(1) brightness(0.9);
 }
 </style>
 """, unsafe_allow_html=True)
