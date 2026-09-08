@@ -1053,7 +1053,7 @@ legend_items = []
 if ndvi_layers and ndvi_layers[0]["tile_recent"]:
     legend_items.append({
         "type": "gradient",
-        "title": f"Vegetation NDVI",
+        "title": f"Vegetation NDVI{_suffix(l['spec'])}",
         "palette": NDVI_PALETTE,
         "low": "Low", "high": "High",
     })
@@ -1062,7 +1062,7 @@ if loss_layers and any(l["tile_loss"] for l in loss_layers):
         if l["tile_loss"]:
             legend_items.append({
                 "type": "swatch",
-                "title": f"Forest loss{_suffix(l['spec'])}",
+                "title": f"Forest loss",
                 "color": l["color"],
             })
 if legend_items:
