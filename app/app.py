@@ -758,7 +758,7 @@ if active_gdf is not None:
     
     version_key = active_gdf.geometry.iloc[0].wkt
     aoi_geojson_str = get_aoi_geojson_str(active_gdf, version_key)
-    st.write(f"⏱️ aoi_geojson_str: {time.time() - t0:.1f}s") 
+     
     
     try:
         for i, spec in enumerate(active_forest_specs):
