@@ -675,10 +675,10 @@ Dynamic World land-cover classifier. It compares two time periods (2019–2020 v
 and land management. The app is currently set on a test area between New South
 Wales and Victoria, Australia, as an example for demonstration purposes.
 
-. Draw a polygon/rectangle on the map, or upload your own analysis area (GeoJSON).
-. Optionally upload point locations (KML or CSV) to mark places of interest.
-. Adjust the Dynamic World forest mask threshold below.
-. Export a PDF report with the map and summary.
+. Draw a polygon/rectangle on the map, or upload your own analysis area (GeoJSON).\n
+. Optionally upload point locations (KML or CSV) to mark places of interest.\n
+. Adjust the Dynamic World forest mask threshold below.\n
+. Export a PDF report with the map and summary.\n
 
 A sample dataset, related to the area, is available for download to test the app.
 
