@@ -668,7 +668,22 @@ if "drawn_invalid_msg" not in st.session_state:
 # =========================================================
 st.title("Vegetation & Deforestation Monitor")
 st.write("Interactive deforestation monitoring application using GIS and remote sensing.")
+st.sidebar.markdown("""
+This tool monitors forest loss using Sentinel-2 satellite imagery and Google's
+Dynamic World land-cover classifier. It compares two time periods (2019–2020 vs.
+2024–2025) to highlight areas of forest loss, useful for environmental monitoring
+and land management.
 
+**How to use it:**
+1. Draw a polygon/rectangle on the map, or upload your own analysis area (GeoJSON).
+2. Optionally upload point locations (KML or CSV) to mark places of interest.
+3. Adjust the Dynamic World forest mask threshold below.
+4. Export a PDF report with the map and summary.
+
+Don't have data on hand? Download sample files below to test the app.
+
+*Built by Pierre Misrai — 2026*
+""")
 uploaded_file = st.file_uploader("Upload your analysis area (GeoJSON)", type=["geojson"])
 
 
