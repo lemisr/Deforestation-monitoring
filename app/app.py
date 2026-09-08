@@ -172,7 +172,10 @@ def geopandas_to_ee(gdf):
     combined_geom = gdf.geometry.unary_union
     geojson = json.loads(gpd.GeoSeries([combined_geom], crs=gdf.crs).to_json())
     return ee.Geometry(geojson["features"][0]["geometry"])
-
+@st.cache_data(ttl=3600, show_spinner=False)
+def get_aoi_geojson_str(_gdf, version_key):
+    aoi_ee = geopandas_to_ee(_gdf)
+    return json.dumps(aoi_ee.getInfo())
 
 def geom_signature(geom_dict):
     """Signature stable d'une géométrie GeoJSON (dict) pour détecter un changement."""
