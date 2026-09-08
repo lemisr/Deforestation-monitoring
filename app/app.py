@@ -698,7 +698,7 @@ uploaded_sites_file = st.file_uploader(
     type=["kml", "csv"],
 )
 
-sample_path = "data/samples/YortaYorta_Limits.geojson"
+sample_path = "data/raw/YortaYorta_Limits.geojson"
 if os.path.exists(sample_path):
     if st.button("Load sample area (Yorta Yorta Aboriginal boundary)"):
         sample_gdf = gpd.read_file(sample_path)
