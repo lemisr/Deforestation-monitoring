@@ -698,6 +698,15 @@ uploaded_sites_file = st.file_uploader(
     type=["kml", "csv"],
 )
 
+sample_path = "data/samples/YortaYorta_Limits.geojson"
+if os.path.exists(sample_path):
+    if st.button("Load sample area (Yorta Yorta Aboriginal boundary)"):
+        sample_gdf = gpd.read_file(sample_path)
+        st.session_state.drawn_geom = json.loads(sample_gdf.to_json())["features"][0]["geometry"]
+        st.session_state.drawn_invalid_msg = None
+        st.rerun()
+     
+
 col_a, col_b = st.columns([1, 5])
 with col_a:
     if st.button("Clear drawn selection"):
