@@ -197,19 +197,6 @@ def _read_kml_bytes(file_bytes):
     return gdf
 
 
-def _read_shp_zip_bytes(file_bytes):
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        zip_path = os.path.join(tmp_dir, "sites.zip")
-        with open(zip_path, "wb") as f:
-            f.write(file_bytes)
-        with zipfile.ZipFile(zip_path) as z:
-            z.extractall(tmp_dir)
-        shp_files = [f for f in os.listdir(tmp_dir) if f.lower().endswith(".shp")]
-        if not shp_files:
-            raise ValueError("No .shp file found inside the zip archive.")
-        gdf = gpd.read_file(os.path.join(tmp_dir, shp_files[0])).copy()
-    return gdf
-
 
 def _read_csv_bytes(file_bytes):
     df = pd.read_csv(io.BytesIO(file_bytes))
@@ -232,12 +219,11 @@ def _read_csv_bytes(file_bytes):
 
 @st.cache_data(show_spinner=False)
 def parse_sites_file(file_bytes, filename):
-    """Parse un fichier de points (KML, SHP zippé ou CSV lat/lon) -> GeoDataFrame de Points en EPSG:4326."""
+    """Parse un fichier de points (KML, ou CSV lat/lon) -> GeoDataFrame de Points en EPSG:4326."""
     ext = filename.lower().split(".")[-1]
     if ext == "kml":
         gdf = _read_kml_bytes(file_bytes)
-    elif ext == "zip":
-        gdf = _read_shp_zip_bytes(file_bytes)
+    
     elif ext == "csv":
         gdf = _read_csv_bytes(file_bytes)
     else:
@@ -684,8 +670,8 @@ uploaded_file = st.file_uploader("Upload your analysis area (GeoJSON)", type=["g
 
 
 uploaded_sites_file = st.file_uploader(
-    "Upload point locations (KML, zipped Shapefile, or CSV with lat/lon columns)",
-    type=["kml", "zip", "csv"],
+    "Upload point locations (KML or CSV with lat/lon columns)",
+    type=["kml", "csv"],
 )
 
 col_a, col_b = st.columns([1, 5])
