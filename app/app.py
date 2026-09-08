@@ -821,7 +821,11 @@ if active_gdf is not None:
         f"Sentinel-2 images ({RECENT_LABEL}, mai–sept.): {n_recent} | "
         f"Sentinel-2 images ({EARLY_LABEL}, mai–sept.): {n_early}"
     )
-
+    st.caption(
+    "The Yorta Yorta Nation is an Aboriginal Australian people from the Murray "
+    "and Goulburn River regions in southeastern Australia, whose Native Title "
+    "rights over parts of this territory were formally recognised in 2004."
+)
 
 # =========================================================
 # SITES CULTURELS : parsing, affichage en points (pas de buffer)
