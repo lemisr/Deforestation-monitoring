@@ -752,8 +752,8 @@ n_recent = n_early = 0
 aoi_geojson_str = None
 
 if active_gdf is not None:
-    aoi_ee = geopandas_to_ee(active_gdf)
-    aoi_geojson_str = json.dumps(aoi_ee.getInfo())
+    version_key = active_gdf.geometry.iloc[0].wkt
+    aoi_geojson_str = get_aoi_geojson_str(active_gdf, version_key) 
     
     try:
         for i, spec in enumerate(active_forest_specs):
