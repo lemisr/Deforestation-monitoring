@@ -1053,7 +1053,7 @@ legend_items = []
 if ndvi_layers and ndvi_layers[0]["tile_recent"]:
     legend_items.append({
         "type": "gradient",
-        "title": f"Vegetation NDVI\n{_suffix(ndvi_layers[0]['spec'])}",
+        "title": f"Vegetation NDVI{_suffix(ndvi_layers[0]['spec'])}",
         "palette": NDVI_PALETTE,
         "low": "Low", "high": "High",
     })
@@ -1084,7 +1084,7 @@ html, body {
 col_left, col_center, col_right = st.columns([1, 8, 1])
 with col_center:
   
-  map_data = st_folium(m, width=1300, height=850, key="main_map")
+  map_data = st_folium(m, width=None, height=700, use_container_width=True, key="main_map")
 
 if map_data and map_data.get("all_drawings"):
     latest = map_data["all_drawings"][-1]
