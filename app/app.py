@@ -672,7 +672,8 @@ st.sidebar.markdown("""
 This tool monitors forest loss using Sentinel-2 satellite imagery and Google's
 Dynamic World land-cover classifier. It compares two time periods (2019–2020 vs.
 2024–2025) to highlight areas of forest loss, useful for environmental monitoring
-and land management.
+and land management. The app is currently set on a test area between New South
+Wales and Victoria, Australia, as an example for demonstration purposes.
 
 **How to use it:**
 1. Draw a polygon/rectangle on the map, or upload your own analysis area (GeoJSON).
@@ -680,7 +681,7 @@ and land management.
 3. Adjust the Dynamic World forest mask threshold below.
 4. Export a PDF report with the map and summary.
 
-Don't have data on hand? Download sample files below to test the app.
+A sample dataset, related to the area, is available for download to test the app.
 
 *Built by Pierre Misrai — 2026*
 """)
