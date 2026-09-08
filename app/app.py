@@ -1094,7 +1094,7 @@ html, body {
 col_left, col_center, col_right = st.columns([1, 8, 1])
 with col_center:
   
-  map_data = st_folium(m, width=1500, height=700, key="main_map")
+  map_data = st_folium(m, width=none, height=700, use_container_width=True, key="main_map")
 
 if map_data and map_data.get("all_drawings"):
     latest = map_data["all_drawings"][-1]
