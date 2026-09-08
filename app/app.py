@@ -100,7 +100,7 @@ section[data-testid="stSidebar"] * {
     filter: invert(1) brightness(0.9);
 }
 [data-testid="stSidebarCollapsebutton"] {
-  display: non !important
+  display: none !important
 }
 </style>
 """, unsafe_allow_html=True)
