@@ -1053,6 +1053,10 @@ layer_control_css = """
 .selected-area-outline {
    filter: drop-shadow(0 0 4px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,1));
 }
+.leaflet-control-layers-list {
+   max-height: none !important;
+   overflow-y: visible !important
+}
 </style>
 """
 m.get_root().html.add_child(folium.Element(layer_control_css))
