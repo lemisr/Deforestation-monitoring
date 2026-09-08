@@ -686,6 +686,8 @@ Wales and Victoria, Australia, as an example for demonstration purposes.
 
 A sample dataset, related to the area, is available for download to test the app.
 
+Note: heavy or repeated testing may temporarily hit Earth Engine's free-tier quota.
+
 *Built by Pierre Misrai — 2026*
 """)
 uploaded_file = st.file_uploader("Upload your analysis area (GeoJSON)", type=["geojson"])
