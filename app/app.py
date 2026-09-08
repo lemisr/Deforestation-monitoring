@@ -99,6 +99,9 @@ section[data-testid="stSidebar"] * {
 [data-testid="stFileChip"] svg {
     filter: invert(1) brightness(0.9);
 }
+[data-testid="stSidebarCollapsebutton"] {
+  display: non !important
+}
 </style>
 """, unsafe_allow_html=True)
    
