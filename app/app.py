@@ -554,7 +554,7 @@ def build_report_image_png(_active_gdf, ndvi_tile_url, loss_tile_url, _sites_gdf
                 continue  # site hors du cadre visible de l'image — ne peut pas être dessiné
             px, py = _pixel(lon, lat)
             r = 5
-            draw.ellipse([px - r, py - r, px + r, py + r], fill=(255, 140, 0), outline=(0, 0, 0))
+            draw.ellipse([px - r, py - r, px + r, py + r], fill=(255, 255, 255), outline=(0, 0, 0), width=2)
             if site_name_col:
                 label = str(row[site_name_col])
                 draw.text((px + r + 3, py - r), label, fill=(255, 255, 255))
