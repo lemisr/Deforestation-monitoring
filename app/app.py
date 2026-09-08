@@ -755,24 +755,22 @@ n_recent = n_early = 0
 aoi_geojson_str = None
 
 if active_gdf is not None:
-    import time
-    t0 = time.time()
+    
     version_key = active_gdf.geometry.iloc[0].wkt
     aoi_geojson_str = get_aoi_geojson_str(active_gdf, version_key)
     st.write(f"⏱️ aoi_geojson_str: {time.time() - t0:.1f}s") 
     
     try:
         for i, spec in enumerate(active_forest_specs):
-            t1 = time.time()
+            
             tile_recent, n_recent = sentinel2_ndvi_tile(
                 aoi_geojson_str, RECENT_START, RECENT_END, CLOUD_PCT_S2, forest_spec=spec
             )
-            st.write(f"⏱️ tile_recent: {time.time() - t1:.1f}s")
-            t2 = time.time()
+            
             tile_early, n_early = sentinel2_ndvi_tile(
                 aoi_geojson_str, EARLY_START, EARLY_END, CLOUD_PCT_S2, forest_spec=spec
             )
-            st.write(f"⏱️ tile_early: {time.time() - t2:.1f}s")
+            
             
             ndvi_layers.append({
                 "spec": spec,
