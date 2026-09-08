@@ -99,7 +99,8 @@ section[data-testid="stSidebar"] * {
 [data-testid="stFileChip"] svg {
     filter: invert(1) brightness(0.9);
 }
-[data-testid="stSidebarCollapsebutton"] {
+[data-testid="stBaseButton-headerNoPadding"],
+[data-testid="stBaseButton-header"] { 
   display: none !important
 }
 </style>
