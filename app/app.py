@@ -822,7 +822,7 @@ if active_gdf is not None:
         f"Sentinel-2 images ({EARLY_LABEL}, mai–sept.): {n_early}"
     )
     st.caption(
-    "The Yorta Yorta Nation is an Aboriginal Australian people from the Murray "
+    "The Yorta Yorta are Aboriginal peoples from the Murray "
     "and Goulburn River regions in southeastern Australia, whose Native Title "
     "rights over parts of this territory were formally recognised in 2004."
 )
