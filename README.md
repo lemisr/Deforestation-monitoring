@@ -104,8 +104,7 @@ flowchart LR
 4. Export and robustness
    - Implemented PDF report generation compositing the same map tiles shown in the app
    - Parallelised tile fetching and cached Earth Engine calls with Streamlit's caching to avoid redundant recomputation
-   - Handled Earth Engine's non-commercial compute quota to keep the app responsive under normal use
-
+   
 5. Polish
    - Designed a dark theme across the app, map controls, and legend
    - Added a sample dataset (Yorta Yorta Country boundary) for one-click testing
