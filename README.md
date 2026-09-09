@@ -5,7 +5,10 @@ A web application that monitors forest loss using satellite imagery — draw or 
 **[Link→](#)** *(https://deforestation-monitoring.streamlit.app/)*
 
 ---
+## Author
 
+Pierre Misrai, 2026
+GIS · Remote Sensing · Political & Environmental Geography
 ## Overview
 
 This project explores how freely available satellite imagery and machine-learning land-cover classification can be combined into a simple, self-serve tool for monitoring vegetation and forest loss over time.
@@ -81,8 +84,14 @@ You'll need a Google Earth Engine service account and to configure its credentia
 This application is a proof of concept developed for educational and portfolio purposes. It visualises vegetation change derived from publicly available satellite imagery and does not assess cultural significance or determine the causes of environmental change.
 
 ---
+## Workflow
 
-## Author
+```mermaid
+flowchart TD
+    A[Define area of interest<br/>Draw, upload, or load sample] --> B[Validate area<br/>Must stay within study boundary]
+    B --> C[Sentinel-2 imagery<br/>2019-20 vs 2024-25]
+    C --> D[Dynamic World mask<br/>Excludes cropland]
+    D --> E[NDVI & forest loss<br/>Computed per pixel, cached]
+    E --> F[Map view<br/>Toggle layers]
+    E --> G[PDF report<br/>Static export]
 
-Pierre Misrai, 2026
-GIS · Remote Sensing · Political & Environmental Geography
