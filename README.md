@@ -93,30 +93,5 @@ flowchart LR
     C --> D[4. Export and robustness]
     D --> E[5. Polish]
 
-1. Design and data
-   - Defined the use case: monitoring forest loss over a user-defined area
-   - Selected Sentinel-2 (imagery) and Dynamic World (land-cover classification) as data sources
-   - Set up the project structure and Earth Engine service account authentication
 
-2. Geospatial logic
-   - Built cloud-masked Sentinel-2 composites over two comparable time windows (2019-2020 vs. 2024-2025)
-   - Implemented a Dynamic World-based forest mask with an adjustable tree-probability threshold, to exclude cropland
-   - Computed NDVI difference and flagged significant vegetation decline as forest loss
-
-3. User interface
-   - Added area-of-interest input via map drawing or GeoJSON upload, with multi-part polygon support
-   - Added optional point-of-interest import (KML, CSV)
-   - Built the interactive Folium map with toggleable layers and a sidebar for the forest-mask threshold
-
-4. Export and robustness
-   - Implemented PDF report generation compositing the same map tiles shown in the app
-   - Parallelised tile fetching and cached Earth Engine calls with Streamlit's caching to avoid redundant recomputation
-   - Handled Earth Engine's non-commercial compute quota to keep the app responsive under normal use
-
-5. Polish
-   - Designed a dark theme across the app, map controls, and legend
-   - Added a sample dataset (Yorta Yorta Country boundary) for one-click testing
-   - Wrote user-facing instructions and this documentation
-
----
 
