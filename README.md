@@ -84,5 +84,5 @@ This application is a proof of concept developed for educational and portfolio p
 
 ## Author
 
-Pierre Misrai
+Pierre Misrai, 2026
 GIS · Remote Sensing · Political & Environmental Geography
