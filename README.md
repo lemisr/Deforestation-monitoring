@@ -2,7 +2,7 @@
 
 A web application that monitors forest loss using satellite imagery — draw or upload any area of interest and get an automated vegetation change report.
 
-**[Link →](#)** *https://deforestation-monitoring.streamlit.app/*
+**[Live demo →](#)** *(add your Streamlit Cloud link here)*
 
 ---
 
@@ -61,6 +61,28 @@ The app compares two time periods (2019–2020 vs. 2024–2025) using Sentinel-2
 
 ## Running locally
 
-```bash
 pip install -r requirements.txt
 streamlit run app/app.py
+
+You'll need a Google Earth Engine service account and to configure its credentials as Streamlit secrets (st.secrets["earthengine"]) — see Earth Engine's service account documentation for setup: https://developers.google.com/earth-engine/guides/service_account
+
+---
+
+## Future improvements
+
+- Broader default area (currently limited to a fixed application boundary for the demo)
+- User-selectable comparison dates
+- Additional environmental layers
+
+---
+
+## Disclaimer
+
+This application is a proof of concept developed for educational and portfolio purposes. It visualises vegetation change derived from publicly available satellite imagery and does not assess cultural significance or determine the causes of environmental change.
+
+---
+
+## Author
+
+Pierre Misrai
+GIS · Remote Sensing · Political & Environmental Geography
