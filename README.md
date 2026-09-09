@@ -86,12 +86,12 @@ This application is a proof of concept developed for educational and portfolio p
 ---
 ## Workflow
 
+
+
 ```mermaid
-flowchart TD
-    A[Define area of interest<br/>Draw, upload, or load sample] --> B[Validate area<br/>Must stay within study boundary]
-    B --> C[Sentinel-2 imagery<br/>2019-20 vs 2024-25]
-    C --> D[Dynamic World mask<br/>Excludes cropland]
-    D --> E[NDVI & forest loss<br/>Computed per pixel, cached]
-    E --> F[Map view<br/>Toggle layers]
-    E --> G[PDF report<br/>Static export]
+flowchart LR
+    A[1. Design & data<br/>Sources, structure] --> B[2. Geospatial logic<br/>NDVI, forest mask]
+    B --> C[3. User interface<br/>Map, sidebar, inputs]
+    C --> D[4. Export & robustness<br/>PDF, caching]
+    D --> E[5. Polish<br/>Theme, sample data, docs]
 
