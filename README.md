@@ -86,8 +86,6 @@ This application is a proof of concept developed for educational and portfolio p
 ---
 ## Workflow
 
-
-
 ```mermaid
 flowchart LR
     A[1. Design and data] --> B[2. Geospatial logic]
