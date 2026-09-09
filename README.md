@@ -1,6 +1,6 @@
 # Vegetation & Deforestation Monitor
 
-A web application that monitors forest loss using satellite imagery — draw or upload any area of interest and get an automated vegetation change report.
+A web application that monitors forest loss using satellite imagery, draw or upload any area of interest and get an automated vegetation change report.
 
 **[Link→](#)** *(https://deforestation-monitoring.streamlit.app/)*
 
@@ -13,7 +13,7 @@ GIS · Remote Sensing · Political & Environmental Geography
 
 This project explores how freely available satellite imagery and machine-learning land-cover classification can be combined into a simple, self-serve tool for monitoring vegetation and forest loss over time.
 
-The idea for this project grew out of my experience working with the Yorta Yorta community in Victoria, Australia — it made me want to build something that could make satellite-based environmental monitoring more accessible. The application itself is generic: it works on any area worldwide, and a sample dataset covering the public Yorta Yorta Country boundary is included so anyone can try it without their own data.
+The idea for this project grew out of my experience working with the Yorta Yorta community in Victoria, Australia, it made me want to build something that could make satellite-based environmental monitoring more accessible. The application itself is generic: it works on any area inside the boundary set in the app, and a sample dataset covering the public Yorta Yorta Country boundary is included so anyone can try it without their own data.
 
 The app compares two time periods (2019–2020 vs. 2024–2025) using Sentinel-2 imagery, applies a forest mask derived from Google's Dynamic World land-cover classifier to filter out cropland, and highlights areas of significant vegetation decline. Results can be exported as a PDF report.
 
@@ -21,10 +21,10 @@ The app compares two time periods (2019–2020 vs. 2024–2025) using Sentinel-2
 
 ## Features
 
-- **Flexible area of interest** — draw a polygon/rectangle directly on the map, or upload your own GeoJSON
-- **Optional points of interest** — upload KML or CSV (lat/lon) files to mark places on the map
+- **Area of interest** — draw a polygon/rectangle directly on the map, or upload your own GeoJSON
+- **Optional points of interest** — upload KML or CSV (lat/lon) files to mark places on the map with labels
 - **Forest mask (Google Dynamic World)** — adjustable tree-probability threshold to exclude cropland from the analysis, avoiding false positives from harvested fields
-- **Vegetation & forest-loss layers** — NDVI visualisation and a dedicated loss layer (2019–2020 vs. 2024–2025), all toggleable on the map
+- **Vegetation & forest-loss layers** — NDVI visualisation and a dedicated loss layer (2019–2020 vs. 2024–2025)
 - **PDF report export** — satellite basemap, vegetation layers, area outline and points of interest, composited into a downloadable report
 - **Sample dataset included** — one-click loading of an example area (Yorta Yorta Country boundary) to test the app without preparing your own data
 
@@ -32,7 +32,7 @@ The app compares two time periods (2019–2020 vs. 2024–2025) using Sentinel-2
 
 ## How it works
 
-1. Draw an area on the map (or upload a GeoJSON) — optionally load the included sample area instead
+1. Draw an area on the map (or upload a GeoJSON), optionally load the included sample area instead
 2. Optionally upload points of interest (KML/CSV)
 3. Adjust the Dynamic World forest-mask threshold in the sidebar
 4. Review the vegetation and forest-loss layers on the map
@@ -46,7 +46,7 @@ The app compares two time periods (2019–2020 vs. 2024–2025) using Sentinel-2
 - Cloud/shadow masking is done per-pixel via the Sentinel-2 SCL band
 - The forest mask uses Google Dynamic World's per-pixel tree probability (averaged over the period), which is more robust than a simple NDVI threshold at distinguishing forest from very green cropland
 - Map tiles and PDF report images are generated on demand via Earth Engine's tile service; Streamlit caching is used to avoid redundant recomputation for a given area/threshold
-- Because Earth Engine's non-commercial tier has a compute quota, heavy or repeated use may occasionally hit a rate limit — this is expected and not a bug in the app
+- Because Earth Engine's non-commercial tier has a compute quota, heavy or repeated use may occasionally hit a rate limit, this is expected and not a bug in the app
 
 ---
 
@@ -62,14 +62,7 @@ The app compares two time periods (2019–2020 vs. 2024–2025) using Sentinel-2
 
 ---
 
-## Running locally
 
-pip install -r requirements.txt
-streamlit run app/app.py
-
-You'll need a Google Earth Engine service account and to configure its credentials as Streamlit secrets (st.secrets["earthengine"]) — see Earth Engine's service account documentation for setup: https://developers.google.com/earth-engine/guides/service_account
-
----
 
 ## Future improvements
 
@@ -92,6 +85,31 @@ flowchart LR
     B --> C[3. User interface]
     C --> D[4. Export and robustness]
     D --> E[5. Polish]
+```
+1. Design and data
+   - Defined the use case: monitoring forest loss over a user-defined area
+   - Selected Sentinel-2 (imagery) and Dynamic World (land-cover classification) as data sources
+   - Set up the project structure and Earth Engine service account authentication
 
+2. Geospatial logic
+   - Built cloud-masked Sentinel-2 composites over two comparable time windows (2019-2020 vs. 2024-2025)
+   - Implemented a Dynamic World-based forest mask with an adjustable tree-probability threshold, to exclude cropland
+   - Computed NDVI difference and flagged significant vegetation decline as forest loss
 
+3. User interface
+   - Added area-of-interest input via map drawing or GeoJSON upload, with multi-part polygon support
+   - Added optional point-of-interest import (KML, CSV)
+   - Built the interactive Folium map with toggleable layers and a sidebar for the forest-mask threshold
+
+4. Export and robustness
+   - Implemented PDF report generation compositing the same map tiles shown in the app
+   - Parallelised tile fetching and cached Earth Engine calls with Streamlit's caching to avoid redundant recomputation
+   - Handled Earth Engine's non-commercial compute quota to keep the app responsive under normal use
+
+5. Polish
+   - Designed a dark theme across the app, map controls, and legend
+   - Added a sample dataset (Yorta Yorta Country boundary) for one-click testing
+   - Wrote user-facing instructions and this documentation
+
+---
 
