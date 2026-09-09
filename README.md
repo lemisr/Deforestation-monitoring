@@ -2,7 +2,7 @@
 
 A web application that monitors forest loss using satellite imagery — draw or upload any area of interest and get an automated vegetation change report.
 
-**[Live demo →](#)** *(add your Streamlit Cloud link here)*
+**[Link →](#)** *https://deforestation-monitoring.streamlit.app/*
 
 ---
 
