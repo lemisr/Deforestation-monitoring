@@ -8,7 +8,7 @@ A web application that monitors forest loss using satellite imagery, draw or upl
 ## Author
 
 Pierre Misrai, 2026
-GIS · Remote Sensing · Political & Environmental Geography
+GIS · Remote Sensing · GIS · Geography
 ## Overview
 
 This project explores how freely available satellite imagery and machine-learning land-cover classification can be combined into a simple, self-serve tool for monitoring vegetation and forest loss over time.
