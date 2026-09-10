@@ -14,9 +14,9 @@ from shapely.geometry import shape, box
 from folium.plugins import Draw
 from google.oauth2 import service_account
 
-# =========================================================
-# CONFIG
-# =========================================================
+
+# CONFIGURATION
+
 st.set_page_config(
     page_title="Vegetation & Deforestation Monitor",
     
@@ -148,9 +148,9 @@ NDVI_MASK_CHOICES = {
 }
 
 
-# =========================================================
+
 # EARTH ENGINE INIT (une seule fois par session)
-# =========================================================
+
 @st.cache_resource(show_spinner=False)
 def init_ee():
     credentials = service_account.Credentials.from_service_account_info(
@@ -168,9 +168,9 @@ except Exception as e:
     st.stop()
 
 
-# =========================================================
+
 # HELPERS
-# =========================================================
+
 def geopandas_to_ee(gdf):
     """Convertit la géométrie d'un GeoDataFrame (1 feature) en ee.Geometry."""
     combined_geom = gdf.geometry.unary_union
@@ -658,18 +658,17 @@ def legend_html_v2(items, bottom=30):
     """
 
 
-# =========================================================
+
 # ETAT
-# =========================================================
+
 if "drawn_geom" not in st.session_state:
     st.session_state.drawn_geom = None  # dict GeoJSON, validé et dans la limite
 if "drawn_invalid_msg" not in st.session_state:
     st.session_state.drawn_invalid_msg = None
 
 
-# =========================================================
 # UI - TITRE / UPLOAD
-# =========================================================
+
 st.title("Vegetation & Deforestation Monitor")
 st.write("Interactive deforestation monitoring application using GIS and remote sensing.")
 st.sidebar.markdown("""
@@ -739,9 +738,9 @@ boundary = gpd.read_file(BOUNDARY_PATH)
 boundary_geom = boundary.geometry.iloc[0]
 
 
-# =========================================================
+
 # DETERMINER L'AOI ACTIVE (upload prioritaire, sinon dessin validé)
-# =========================================================
+
 active_gdf = None
 active_source = None  # "upload" | "draw"
 
@@ -775,10 +774,10 @@ if st.session_state.drawn_invalid_msg:
     st.error(st.session_state.drawn_invalid_msg)
 
 
-# =========================================================
+
 # CALCUL NDVI + PERTE DE FORET (sur toute l'AOI, si une AOI active et valide existe)
 # Une entrée par seuil forêt actif (None = pas de masque, ou [0.5], [0.6], [0.5, 0.6])
-# =========================================================
+
 ndvi_layers = []  # liste de dicts : spec, tile_recent, tile_early
 loss_layers = []  # liste de dicts : spec, tile_loss, color
 n_recent = n_early = 0
@@ -827,9 +826,9 @@ if active_gdf is not None:
     "rights over parts of this territory were formally recognised in 2004."
 )
 
-# =========================================================
-# SITES CULTURELS : parsing, affichage en points (pas de buffer)
-# =========================================================
+
+# POINTS : affichage des points 
+
 sites_gdf = None
 site_name_col = None
 
@@ -858,9 +857,9 @@ if uploaded_sites_file is not None:
         st.error(f"Could not read the points file: {e}")
 
 
-# =========================================================
-# EXPORT PDF (stats + carte, sur le 1er seuil forêt actif)
-# =========================================================
+
+# EXPORT PDF (carte, sur le 1er seuil forêt actif)
+
 if aoi_geojson_str is not None and active_forest_specs and active_forest_specs[0] is not None:
     st.subheader("Map export")
     if st.button("Generate PDF report"):
@@ -903,9 +902,9 @@ if aoi_geojson_str is not None and active_forest_specs and active_forest_specs[0
         )
 
 
-# =========================================================
+
 # CONSTRUCTION DE LA CARTE (une seule fois)
-# =========================================================
+
 bounds = boundary.total_bounds
 minx, miny, maxx, maxy = bounds
 center_lat, center_lon = (miny + maxy) / 2, (minx + maxx) / 2
@@ -1102,9 +1101,9 @@ if legend_items:
     m.get_root().html.add_child(folium.Element(legend_html_v2(legend_items, bottom=30)))
 
 
-# =========================================================
+
 # AFFICHAGE (un seul appel st_folium) + capture du dessin
-# =========================================================
+
 
 m.get_root().html.add_child(folium.Element("""
 <style>
