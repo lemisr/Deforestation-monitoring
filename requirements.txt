@@ -12,4 +12,5 @@ scikit-learn
 reportlab
 shapely
 earthengine-api
-
+folium
+streamlit-folium
