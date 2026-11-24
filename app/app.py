@@ -1011,7 +1011,7 @@ for layer in loss_layers:
         )
 
 draw = Draw(
-    export=True,
+    export=False,
     draw_options={
         "polyline": False,
         "polygon": True,
